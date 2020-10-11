@@ -32,7 +32,7 @@ var express = require("express"),
     var movie= req.body.movie;
     api= process.env.API_KEY;
     
-    let url = "http://www.omdbapi.com/?t="+movie+"&apikey="+api+"&plot=full";
+    let url = "http://www.omdbapi.com/?t="+movie+"&apikey=df123052&plot=full";
     
 
     let settings = { method: "Get" };
