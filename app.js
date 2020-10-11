@@ -52,8 +52,7 @@ var express = require("express"),
 
         
     
-
-var port = process.env.PORT || 3000
-app.listen(port, () => {
+   var port = process.env.PORT || 3000
+    app.listen(port, () => {
     console.log(`Server live at port: ${port}`)
-})
+    })
