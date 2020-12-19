@@ -41,6 +41,7 @@ app.post('/pay',(req,res) =>{
             email: email,
             allow_repeated_payments: false
     }
+    console.log(payload);
     request.post('https://www.test.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}, function(error, response, body){
   if(!error && response.statusCode == 201){
     console.log(body);
