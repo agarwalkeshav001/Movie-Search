@@ -5,6 +5,9 @@ var express = require("express"),
     url = require('url');
     require('dotenv').config();
 var request= require('request');
+var Insta = require('instamojo-nodejs');
+Insta.setKeys('e6803a9ac4edcb6e61ef95bd0aa61427','ce5969c8bf1e754f966d19adb29e2c08');
+Insta.isSandboxMode(true);
 
 
     app.use(bodyParser.json());
@@ -29,24 +32,38 @@ app.post('/pay',(req,res) =>{
     var email = req.body.email;
     var purpose = req.body.purpose;
     var amount = req.body.amount;
+    var data = new Insta.PaymentData();
+ 
+    data.purpose = purpose            // REQUIRED
+    data.amount = amount                  // REQUIRED
+    data.email = email
+    data.buyer_name   = name
+    data.setRedirectUrl(REDIRECT_URL);
     
-    var headers = { 'X-Api-Key': 'e6803a9ac4edcb6e61ef95bd0aa61427', 'X-Auth-Token': 'ce5969c8bf1e754f966d19adb29e2c08'}
-    var payload = {
-            purpose: purpose,
-            amount: amount,
-            buyer_name: name,
-            redirect_url: 'http://www.google.com',
-            send_email: true,
-            webhook: 'http://www.example.com/webhook/',
-            email: email,
-            allow_repeated_payments: false
+    Insta.createPayment(data, function(error, response) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(response);
     }
-    console.log(payload);
-    request.post('https://www.test.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}, function(error, response, body){
-  if(!error && response.statusCode == 201){
-    console.log(body);
-  }
-})
+    });
+//     var headers = { 'X-Api-Key': 'e6803a9ac4edcb6e61ef95bd0aa61427', 'X-Auth-Token': 'ce5969c8bf1e754f966d19adb29e2c08'}
+//     var payload = {
+//             purpose: purpose,
+//             amount: amount,
+//             buyer_name: name,
+//             redirect_url: 'http://www.google.com',
+//             send_email: true,
+//             webhook: 'http://www.example.com/webhook/',
+//             email: email,
+//             allow_repeated_payments: false
+//     }
+//     console.log(payload);
+//     request.post('https://www.test.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}, function(error, response, body){
+//   if(!error && response.statusCode == 201){
+//     console.log(body);
+//   }
+// })
 })
 
 app.get('/form',(req,res)=>{
