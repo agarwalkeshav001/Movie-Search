@@ -42,7 +42,7 @@ app.post('/pay',(req,res) =>{
     data.phone = 9674561602;
     data.send_sms= true;
     data.send_email= true;
-    
+    data.redirect_url= 'www.google.com';
     
     Insta.createPayment(data, function(error, response) {
     if (error) {
