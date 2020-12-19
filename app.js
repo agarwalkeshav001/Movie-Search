@@ -38,7 +38,7 @@ app.post('/pay',(req,res) =>{
     data.amount = amount                  // REQUIRED
     data.email = email
     data.buyer_name   = name
-    data.setRedirectUrl(REDIRECT_URL);
+    
     
     Insta.createPayment(data, function(error, response) {
     if (error) {
