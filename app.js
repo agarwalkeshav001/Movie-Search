@@ -6,8 +6,8 @@ var express = require("express"),
     require('dotenv').config();
 var request= require('request');
 var Insta = require('instamojo-nodejs');
-Insta.setKeys('ce5969c8bf1e754f966d19adb29e2c08','e6803a9ac4edcb6e61ef95bd0aa61427');
-Insta.isSandboxMode(true);
+Insta.setKeys('e6803a9ac4edcb6e61ef95bd0aa61427','ce5969c8bf1e754f966d19adb29e2c08');
+// Insta.isSandboxMode(true);
 
 
     app.use(bodyParser.json());
