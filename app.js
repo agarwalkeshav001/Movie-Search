@@ -23,6 +23,13 @@ var express = require("express"),
         
     });
 
+app.get('/form',(req,res)=>{
+        
+        res.render('form.ejs');
+
+        
+    });
+
     app.get('/index',(req,res)=>{
         res.render('index.ejs');
     })
