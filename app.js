@@ -23,6 +23,29 @@ var express = require("express"),
         
     });
 
+app.post('/pay',(req,res) =>{
+    var name = req.body.name;
+    var email = req.body.email;
+    var purpose = req.body.purpose;
+    var amount = req.body.amount;
+    
+    var headers = { 'X-Api-Key': 'e6803a9ac4edcb6e61ef95bd0aa61427', 'X-Auth-Token': 'ce5969c8bf1e754f966d19adb29e2c08'}
+    var payload = {
+            purpose: purpose,
+            amount: amount,
+            buyer_name: name,
+            redirect_url: 'http://www.google.com',
+            send_email: true,
+            webhook: 'http://www.example.com/webhook/',
+            email: email,
+            allow_repeated_payments: false
+    }
+    request.post('https://www.test.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}, function(error, response, body){
+  if(!error && response.statusCode == 201){
+    console.log(body);
+  }
+})
+
 app.get('/form',(req,res)=>{
         
         res.render('form.ejs');
