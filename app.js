@@ -38,6 +38,10 @@ app.post('/pay',(req,res) =>{
     data.amount = amount                  // REQUIRED
     data.email = email
     data.buyer_name   = name
+    data.currency = 'INR';
+    data.phone = 9674561602;
+    data.send_sms= true;
+    data.send_email= true;
     
     
     Insta.createPayment(data, function(error, response) {
