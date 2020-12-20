@@ -75,9 +75,13 @@ app.post('/pay',(req,res) =>{
   });
 })
 
-app.get('/form',(req,res)=>{
+app.post('/form',(req,res)=>{
         
-        res.render('form.ejs');
+        var buyer= req.body.buyer;
+        var status= req.body.status;
+        var id = req.body.payment_id;
+        console.log(buyer,status,id);
+        res.send(buyer,status);
 
         
     });
