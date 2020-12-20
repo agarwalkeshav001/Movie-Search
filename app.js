@@ -75,7 +75,7 @@ app.post('/pay',(req,res) =>{
   });
 })
 
-app.post('/form',(req,res)=>{
+app.post('/getid',(req,res)=>{
         
         var buyer= req.body.buyer;
         var status= req.body.status;
@@ -112,11 +112,8 @@ app.post('/form',(req,res)=>{
     });
     
 
-    app.get('/getid',(req,res) =>{
-        var id =req.query.payment_id;
-        var status = req.query.payment_idl;
-        var rid = req.query.rid;
-        res.send(id,status,rid);
+    app.get('/form',(req,res) =>{
+        res.render('form.ejs');
     })
         
     
