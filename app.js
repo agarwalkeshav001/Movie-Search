@@ -66,11 +66,14 @@ app.post('/pay',(req,res) =>{
             allow_repeated_payments: false
     }
     console.log(payload);
-    axios.post('https://www.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}).then (function(error, response, body){
-  if(!error && response.statusCode == 201){
+    axios.post('https://www.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}).then (function(response, body){
+    if(response.statusCode == 201){
     console.log(body);
   }
 })
+        .catch(function (error) {
+    console.log(error);
+  });
 })
 
 app.get('/form',(req,res)=>{
