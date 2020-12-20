@@ -61,7 +61,7 @@ app.post('/pay',(req,res) =>{
             buyer_name: name,
             redirect_url: 'http://www.google.com',
             send_email: true,
-            webhook: 'http://www.example.com/webhook/',
+            webhook: '/index',
             email: email,
             allow_repeated_payments: false
     }
