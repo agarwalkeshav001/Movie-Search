@@ -108,7 +108,12 @@ app.get('/form',(req,res)=>{
     });
     
 
-
+    app.get('/getid',(req,res) =>{
+        var id =req.query.payment_id;
+        var status = req.query.payment_idl;
+        var rid = req.query.rid;
+        res.send(id,status,rid);
+    })
         
     
    var port = process.env.PORT || 3000
