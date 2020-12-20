@@ -4,9 +4,10 @@ var express = require("express"),
     bodyParser = require('body-parser');
     url = require('url');
     require('dotenv').config();
-var request= require('request');
-var Insta = require('instamojo-nodejs');
-Insta.setKeys('e6803a9ac4edcb6e61ef95bd0aa61427','ce5969c8bf1e754f966d19adb29e2c08');
+    const axios = require('axios');
+// var request= require('request');
+// var Insta = require('instamojo-nodejs');
+// Insta.setKeys('e6803a9ac4edcb6e61ef95bd0aa61427','ce5969c8bf1e754f966d19adb29e2c08');
 // Insta.isSandboxMode(true);
 
 
@@ -32,43 +33,43 @@ app.post('/pay',(req,res) =>{
     var email = req.body.email;
     var purpose = req.body.purpose;
     var amount = req.body.amount;
-    var data = new Insta.PaymentData();
+//     var data = new Insta.PaymentData();
  
-    data.purpose = purpose            // REQUIRED
-    data.amount = amount                  // REQUIRED
-    data.email = email
-    data.buyer_name   = name
-    data.currency = 'INR';
-    data.phone = 9674561602;
-    data.send_sms= true;
-    data.send_email= true;
-    data.redirect_url= 'http://www.google.com';
-    data.webhook ='https://www.instamojo.com/@gruwitz_/117b36577a1e48f78de5dd57ec899fb6';
+//     data.purpose = purpose            // REQUIRED
+//     data.amount = amount                  // REQUIRED
+//     data.email = email
+//     data.buyer_name   = name
+//     data.currency = 'INR';
+//     data.phone = 9674561602;
+//     data.send_sms= true;
+//     data.send_email= true;
+//     data.redirect_url= 'http://www.google.com';
     
-    Insta.createPayment(data, function(error, response) {
-    if (error) {
-        console.log(error);
-    } else {
-        console.log(response);
-    }
-    });
-//     var headers = { 'X-Api-Key': 'e6803a9ac4edcb6e61ef95bd0aa61427', 'X-Auth-Token': 'ce5969c8bf1e754f966d19adb29e2c08'}
-//     var payload = {
-//             purpose: purpose,
-//             amount: amount,
-//             buyer_name: name,
-//             redirect_url: 'http://www.google.com',
-//             send_email: true,
-//             webhook: 'http://www.example.com/webhook/',
-//             email: email,
-//             allow_repeated_payments: false
+    
+//     Insta.createPayment(data, function(error, response) {
+//     if (error) {
+//         console.log(error);
+//     } else {
+//         console.log(response);
 //     }
-//     console.log(payload);
-//     request.post('https://www.test.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}, function(error, response, body){
-//   if(!error && response.statusCode == 201){
-//     console.log(body);
-//   }
-// })
+//     });
+    var headers = { 'X-Api-Key': 'e6803a9ac4edcb6e61ef95bd0aa61427', 'X-Auth-Token': 'ce5969c8bf1e754f966d19adb29e2c08'}
+    var payload = {
+            purpose: purpose,
+            amount: amount,
+            buyer_name: name,
+            redirect_url: 'http://www.google.com',
+            send_email: true,
+            webhook: 'http://www.example.com/webhook/',
+            email: email,
+            allow_repeated_payments: false
+    }
+    console.log(payload);
+    axios.post('https://www.test.instamojo.com/api/1.1/payment-requests/', {form: payload,  headers: headers}, function(error, response, body){
+  if(!error && response.statusCode == 201){
+    console.log(body);
+  }
+})
 })
 
 app.get('/form',(req,res)=>{
