@@ -59,9 +59,8 @@ app.post('/pay',(req,res) =>{
             purpose: purpose,
             amount: amount,
             buyer_name: name,
-            redirect_url: 'http://www.google.com',
+            redirect_url: ''https://moviess-reviewss.herokuapp.com/form';
             send_email: true,
-            webhook: '/index',
             email: email,
             allow_repeated_payments: false
     }
