@@ -4,11 +4,12 @@ var express = require("express"),
     bodyParser = require('body-parser');
     url = require('url');
     require('dotenv').config();
+
     const axios = require('axios');
 // var request= require('request');
 // var Insta = require('instamojo-nodejs');
-// Insta.setKeys('e6803a9ac4edcb6e61ef95bd0aa61427','ce5969c8bf1e754f966d19adb29e2c08');
-// Insta.isSandboxMode(true);
+// // Insta.setKeys('e6803a9ac4edcb6e61ef95bd0aa61427','ce5969c8bf1e754f966d19adb29e2c08');
+
 
 
     app.use(bodyParser.json());
