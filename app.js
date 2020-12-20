@@ -77,7 +77,7 @@ app.post('/pay',(req,res) =>{
 
 app.post('/getid',(req,res)=>{
         
-        var buyer= req.body.buyer;
+        var buyer= req.body.buyer_email;
         var status= req.body.status;
         var id = req.body.payment_id;
         console.log(buyer,status,id);
