@@ -30,8 +30,6 @@ var express = require("express"),
     });
 
     app.get('/index',(req,res)=>{
-        
-        console.log(config.title + ' ' + config.id);
         res.render('index.ejs');
     })
 
