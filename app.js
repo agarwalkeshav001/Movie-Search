@@ -21,7 +21,7 @@ var express = require("express"),
     app.use(express.static(path.join(__dirname, 'views')))
     
     const fetch = require('node-fetch');
-
+    var config = require('api.json');
     app.get('/',(req,res)=>{
         
         res.redirect('/index');
@@ -30,7 +30,7 @@ var express = require("express"),
     });
 
     app.get('/index',(req,res)=>{
-        var config = require('api.json');
+        
         console.log(config.title + ' ' + config.id);
         res.render('index.ejs');
     })
