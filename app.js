@@ -30,6 +30,8 @@ var express = require("express"),
     });
 
     app.get('/index',(req,res)=>{
+        var config = require('api.json');
+        console.log(config.title + ' ' + config.id);
         res.render('index.ejs');
     })
 
